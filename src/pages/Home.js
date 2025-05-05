@@ -2,7 +2,7 @@ function Home() {
   const sections = [
     {
       title: "Purpose",
-      content: "The point of this website is to provide a platform where users can learn about the hostile and toxic patterns that exist on the internet. The website is designed to be a parody of the internet experience, highlighting the absurdity of certain online behaviors and trends."
+      content: "The point of this website is to provide a platform where users can learn about the hostile and toxic patterns that exist on the internet. The website is designed to be a parody of news pages and onlnie shops, highlighting the toxic behaviors of these sites."
     },
     {
       title: "Available Pages",
@@ -13,11 +13,11 @@ function Home() {
         },
         {
           name: "Blog",
-          description: "Emulates a blog or newspage, with a focus on the hostile and toxic patterns existing on these types of websites."
+          description: "Emulates a blog or news page, with a focus on the hostile and toxic patterns existing on these types of websites."
         },
         {
           name: "Shop",
-          description: "Simulates a common toxic shopping platform, featuring various dark patterns that try to trap you with additional fees and manipulative tactics."
+          description: "Simulates a common online shopping platform, featuring various dark patterns that try to trap you with additional fees and manipulative tactics."
         },
         {
           name: "Toxic Patterns",

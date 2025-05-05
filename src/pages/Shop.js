@@ -5,6 +5,7 @@ function Shop() {
   const { triggerToxicPattern } = useToxicContext();
   const [products, setProducts] = useState(Array.from({ length: 6 }, (_, i) => i + 1));
   const [showPopup, setShowPopup] = useState(false);
+  const [showAdditionalPopup, setShowAdditionalItemPopup] = useState(false);
   const [timer, setTimer] = useState(300);
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCartItems] = useState([
@@ -16,7 +17,6 @@ function Shop() {
     }
   ]);
   const [checkoutStep, setCheckoutStep] = useState(0);
-  const [userInfo, setUserInfo] = useState({});
   const [viewerCount, setViewerCount] = useState(15);
   const [showRetentionPopup, setShowRetentionPopup] = useState(false);
 
@@ -65,7 +65,7 @@ function Shop() {
       }];
     });
   
-    setShowPopup(true);
+    setShowAdditionalItemPopup(true);
     const notification = document.createElement('div');
     notification.className = 'fixed top-40 right-20 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50';
     notification.textContent = 'Added to cart!';
@@ -74,6 +74,23 @@ function Shop() {
       document.body.removeChild(notification);
     }, 2000);
   };
+
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
+
+  const closeAdditionalPopup = () => {
+    setShowAdditionalItemPopup(false);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowPopup(true);
+    }, 20000); // 20 seconds in milliseconds
+
+    return () => clearTimeout(timer); // Cleanup on unmount
+  }, []);
 
   const removeFromCart = (itemId) => {
     if (itemId === 'sub-1') {
@@ -118,7 +135,7 @@ function Shop() {
                 <h3 className="text-red-600 font-bold">Create Account to Continue</h3>
                 <form onSubmit={(e) => {
                   e.preventDefault();
-                  triggerToxicPattern("Submitted personal email and created account");
+                  triggerToxicPattern("Submitted personal information which could be skipped");
                   setCheckoutStep(1);
                 }}>
                   <input 
@@ -135,7 +152,7 @@ function Shop() {
                   />
                   <div className="text-xs text-gray-500 mt-2">
                     * By creating an account, you agree to our Terms of Service, Privacy Policy, 
-                    and to receive marketing emails which you cannot opt out of.
+                    to receive marketing emails which you cannot opt out of, and the sharing of all your provided data.
                   </div>
                   <button 
                     type="submit"
@@ -146,10 +163,10 @@ function Shop() {
                 </form>
                 <button 
                   onClick={() => setCheckoutStep(1)}
-                  className="w-full text-gray-100 py-2 rounded hover:text-gray-200 mt-4"
+                  className="w-full text-gray-200 py-2 rounded hover:text-gray-200 mt-4"
                   style={{ textShadow: '0 0 1px rgba(0,0,0,0.1)' }}
                 >
-                  continue without account
+                  Continue without account
                 </button>
               </div>
             );
@@ -165,7 +182,7 @@ function Shop() {
                       const address = formData.get('address');
               
                       if (name || phone || address) {
-                        triggerToxicPattern("Submitted unnecessary personal information");
+                        triggerToxicPattern("Submitted personal information which is not explicitly needed");
                       }
                       
                       setCheckoutStep(2);
@@ -197,6 +214,9 @@ function Shop() {
                       />
                       <div className="text-xs text-gray-500 mt-2">
                         * Almost all fields are mandatory for enhanced customer experience
+                      </div>
+                      <div className="text-xs text-gray-300 mt-2">
+                        * By providing additional information you agree to us sharing this information with all our partners.
                       </div>
                       <button 
                         type="submit"
@@ -309,6 +329,46 @@ function Shop() {
 
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+          <div className="bg-white p-8 rounded-lg shadow-lg relative w-3/4 max-w-lg">
+            <h2 className="text-2xl font-bold mb-4">Sign Up for Our Newsletter and recieve free shipping on your first order!</h2>
+            <p className="text-gray-700 mb-6">
+              Get the latest redundant information and spam mails from us! Don't miss out! This is a great opportunity to receive content you never asked for,
+              and is not needed at all, you can close this popup in the top right corner.
+            </p>
+            <form onSubmit={(e) => {
+              e.preventDefault();
+              triggerToxicPattern("Provided personal information by signing up for the newsletter, the popup could simply be closed by finding the exit button");
+              closePopup();
+            }} className="space-y-4">
+              <input
+                type="email"
+                placeholder="Enter your email address*"
+                className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                required
+              />
+              <div className="text-xs text-gray-500 mb-4">
+                * By entering your email, you agree to receive unlimited marketing emails which you cannot unsubscribe from, and us sharing your email with our partners.
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700"
+              >
+                Sign Up Now
+              </button>
+            </form>
+            <button
+              onClick={closePopup}
+              className="absolute top-2 right-2 text-gray opacity-0 hover:opacity-100 transition-opacity duration-300"
+              style={{ fontSize: "12px" }}
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+
+      {showAdditionalPopup && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg relative w-[480px]">
             <h3 className="text-xl font-bold mb-4">🎉 Special Offer!</h3>
             <div className="flex items-start gap-4 mb-6">
@@ -331,7 +391,7 @@ function Shop() {
             </div>
             <button
               onClick={() => {
-                setShowPopup(false);
+                setShowAdditionalItemPopup(false);
               }}
               className="mt-4 w-full bg-gray-200 text-gray-700 py-2 rounded hover:bg-gray-300"
             >
@@ -340,7 +400,7 @@ function Shop() {
             <button
               onClick={() => {
                 triggerToxicPattern("Accepted manipulative offer");
-                setShowPopup(false);
+                setShowAdditionalItemPopup(false);
                 addToCart({
                   id: 'bundle-1',
                   name: 'Premium Bundle Pack',

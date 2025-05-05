@@ -70,7 +70,7 @@ function Blog() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(true);
-    }, 30000); // 30 seconds in milliseconds
+    }, 20000); // 20 seconds in milliseconds
 
     return () => clearTimeout(timer); // Cleanup on unmount
   }, []);
@@ -181,7 +181,7 @@ function Blog() {
             </p>
             <form onSubmit={(e) => {
               e.preventDefault();
-              triggerToxicPattern("Blindly signed up for the newsletter");
+              triggerToxicPattern("Provided personal information by signing up for the newsletter, the popup could simply be closed by finding the exit button");
               closePopup();
             }} className="space-y-4">
               <input
@@ -191,7 +191,7 @@ function Blog() {
                 required
               />
               <div className="text-xs text-gray-500 mb-4">
-                * By entering your email, you agree to receive unlimited marketing emails which you cannot unsubscribe from
+                * By entering your email, you agree to receive unlimited marketing emails which you cannot unsubscribe from, and us sharing your email with our partners.
               </div>
               <button
                 type="submit"
@@ -224,7 +224,7 @@ function Blog() {
               <div className="flex gap-4">
                 <button
                   onClick={() => {
-                    triggerToxicPattern("Accepted all cookies without reading");
+                    triggerToxicPattern("Blindly accepted all cookies before reading the details of this");
                     setAllCookiesAccepted(true);
                     setShowCookieModal(false);
                   }}
@@ -327,7 +327,7 @@ function Blog() {
                 </button>
                 <button
                   onClick={() => {
-                    triggerToxicPattern("Gave up and accepted all cookies");
+                    triggerToxicPattern("Manipulated into accepting all cookies");
                     setAllCookiesAccepted(true);
                     setShowCookieModal(false);
                   }}
