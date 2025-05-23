@@ -1,9 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
-import { useToxicContext } from "../context/ToxicContext";
 
 function Layout() {
-  const { toxicCount } = useToxicContext();
-
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
       <header className="bg-blue-600 text-white p-6 shadow-md">
@@ -15,9 +12,6 @@ function Layout() {
             <Link to="/shop" className="hover:underline">Shop</Link>
             <Link to="/toxic-patterns" className="hover:underline">Toxic Patterns</Link>
           </nav>
-        </div>
-        <div className="bg-red-500 text-white text-center py-2">
-          Toxic Patterns Triggered: {toxicCount}
         </div>
       </header>
       <main className="container mx-auto py-10 px-4">

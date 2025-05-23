@@ -3,7 +3,7 @@ import { useToxicContext } from "../context/ToxicContext";
 
 function Shop() {
   const { triggerToxicPattern } = useToxicContext();
-  const [products, setProducts] = useState(Array.from({ length: 6 }, (_, i) => i + 1));
+  const [products] = useState(Array.from({ length: 6 }, (_, i) => i + 1));
   const [showPopup, setShowPopup] = useState(false);
   const [showAdditionalPopup, setShowAdditionalItemPopup] = useState(false);
   const [timer, setTimer] = useState(300);
@@ -79,11 +79,6 @@ function Shop() {
     setShowPopup(false);
   };
 
-
-  const closeAdditionalPopup = () => {
-    setShowAdditionalItemPopup(false);
-  };
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(true);
@@ -135,7 +130,7 @@ function Shop() {
                 <h3 className="text-red-600 font-bold">Create Account to Continue</h3>
                 <form onSubmit={(e) => {
                   e.preventDefault();
-                  triggerToxicPattern("Submitted personal information which could be skipped");
+                  triggerToxicPattern("Submitted personal information, personal information should never be submitted when not absolutely necessary.");
                   setCheckoutStep(1);
                 }}>
                   <input 
@@ -182,7 +177,7 @@ function Shop() {
                       const address = formData.get('address');
               
                       if (name || phone || address) {
-                        triggerToxicPattern("Submitted personal information which is not explicitly needed");
+                        triggerToxicPattern("Submitted additional personal information which is not explicitly needed, personal information should never be submitted when not absolutely necessary.");
                       }
                       
                       setCheckoutStep(2);
@@ -337,7 +332,7 @@ function Shop() {
             </p>
             <form onSubmit={(e) => {
               e.preventDefault();
-              triggerToxicPattern("Provided personal information by signing up for the newsletter, the popup could simply be closed by finding the exit button");
+              triggerToxicPattern("Provided personal information by signing up for the newsletter without reading the details, generally these newsletters do not provide you with any useful information.");
               closePopup();
             }} className="space-y-4">
               <input
@@ -399,7 +394,7 @@ function Shop() {
             </button>
             <button
               onClick={() => {
-                triggerToxicPattern("Accepted manipulative offer");
+                triggerToxicPattern("Accepted manipulative offer, these additional offers are only implemented to make you spend more money.");
                 setShowAdditionalItemPopup(false);
                 addToCart({
                   id: 'bundle-1',
@@ -474,7 +469,7 @@ function Shop() {
             </div>
             <button
                 onClick={() => {
-                triggerToxicPattern("Accepted manipulative retention offer");
+                triggerToxicPattern("Accepted manipulative retention offer, this only costs you money in the end.");
                 setShowRetentionPopup(false);
                 }}
                 className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 mb-2"

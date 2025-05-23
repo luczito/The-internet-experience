@@ -5,10 +5,10 @@ const AdCard = ({ position, triggerToxicPattern }) => (
     <div className="hidden lg:block w-[300px] bg-white rounded-lg shadow-lg overflow-hidden">
     <div className="relative">
       <img 
-        src={position === 'left' ? 
-          "https://placehold.co/300x200/jpeg?text=Breaking+News" : 
-          "https://placehold.co/300x200/jpeg?text=Health+Tips"
-        } 
+      src={position === 'left' 
+        ? "https://picsum.photos/id/20/300/200" 
+        : "https://picsum.photos/id/0/300/200"
+      }
         alt="Article thumbnail" 
         className="w-full h-[200px] object-cover"
       />
@@ -40,7 +40,7 @@ const AdCard = ({ position, triggerToxicPattern }) => (
         <span>2 min read</span>
       </div>
       <button 
-        onClick={() => triggerToxicPattern("Clicked misleading ad")}
+        onClick={() => triggerToxicPattern("Clicked misleading ad, ads in general should always be avoided.")}
         className="w-full text-blue-600 text-sm py-2 hover:underline text-left"
       >
         Learn More →
@@ -60,7 +60,6 @@ function Blog() {
     marketing: true,
     personalization: true
   });
-  const [allCookiesAccepted, setAllCookiesAccepted] = useState(false);
 
   const closePopup = () => {
     setShowPopup(false);
@@ -119,7 +118,7 @@ function Blog() {
             </p>
 
             <div className="relative aspect-video w-3/4 mx-auto mb-8 bg-gray-100 rounded-lg overflow-hidden shadow-lg">
-              {allCookiesAccepted ? (
+              {cookiePreferences.necessary && cookiePreferences.analytics && !showCookieModal ? (
                 <video
                   className="w-full h-full object-cover"
                   autoPlay
@@ -130,10 +129,20 @@ function Blog() {
                   Your browser does not support the video tag.
                 </video>
               ) : (
-                <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                <div
+                  className="absolute inset-0 flex items-center justify-center bg-gray-100 cursor-pointer hover:bg-gray-200 transition"
+                  onClick={() => {
+                    setShowCookieModal(true);
+                    setCookieStep(2); // Go to cookie settings
+                  }}
+                >
                   <div className="text-center p-6">
                     <p className="text-gray-600 font-semibold mb-2">⚠️ Cookie Notice</p>
-                    <p className="text-sm text-gray-500">All cookies must be accepted to play this video</p>
+                    <p className="text-sm text-gray-500">
+                      Analytics cookies must be accepted to see video.
+                      <br />
+                      <span className="underline">Click here to change cookie preferences.</span>
+                    </p>
                   </div>
                 </div>
               )}
@@ -181,7 +190,7 @@ function Blog() {
             </p>
             <form onSubmit={(e) => {
               e.preventDefault();
-              triggerToxicPattern("Provided personal information by signing up for the newsletter, the popup could simply be closed by finding the exit button");
+              triggerToxicPattern("Provided personal information by signing up for the newsletter without reading the details, generally these newsletters do not provide you with any useful information.");
               closePopup();
             }} className="space-y-4">
               <input
@@ -224,8 +233,7 @@ function Blog() {
               <div className="flex gap-4">
                 <button
                   onClick={() => {
-                    triggerToxicPattern("Blindly accepted all cookies before reading the details of this");
-                    setAllCookiesAccepted(true);
+                    triggerToxicPattern("Accepted all cookies without reading what they are used for, on almost all pages this is not neccessary and should be avoided.");
                     setShowCookieModal(false);
                   }}
                   className="flex-1 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700"
@@ -249,8 +257,22 @@ function Blog() {
                 {Object.entries(cookiePreferences).map(([key, value]) => (
                   <div key={key} className="flex items-center justify-between p-3 bg-gray-50 rounded">
                     <div>
-                      <h3 className="font-semibold capitalize">{key}</h3>
-                      <p className="text-xs text-gray-600">Required for basic site functionality</p>
+                      <h3 className="font-semibold">
+                        {{
+                          necessary: "Necessary",
+                          personalization: "Personalization",
+                          analytics: "Analytics",
+                          marketing: "Marketing"
+                        }[key]}
+                      </h3>
+                      <p className="text-xs text-gray-600">
+                        {{
+                          necessary: "Required for basic site functionality",
+                          personalization: "Improves user experience with custom content",
+                          analytics: "Helps us understand user interaction",
+                          marketing: "Used to deliver ads more relevant to you"
+                        }[key]}
+                      </p>
                     </div>
                     <label className="relative inline-flex items-center cursor-pointer">
                       <input
@@ -291,8 +313,7 @@ function Blog() {
               <div className="flex gap-4">
                 <button
                   onClick={() => {
-                    triggerToxicPattern("Manipulated into accepting all cookies");
-                    setAllCookiesAccepted(true);
+                    triggerToxicPattern("Accepted all cookies without reading what they are used for, on almost all pages this is not neccessary and should be avoided.");
                     setShowCookieModal(false);
                   }}
                   className="flex-1 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700"
@@ -327,8 +348,7 @@ function Blog() {
                 </button>
                 <button
                   onClick={() => {
-                    triggerToxicPattern("Manipulated into accepting all cookies");
-                    setAllCookiesAccepted(true);
+                    triggerToxicPattern("Accepted all cookies without reading what they are used for, on almost all pages this is not neccessary and should be avoided.");
                     setShowCookieModal(false);
                   }}
                   className="flex-1 bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700"

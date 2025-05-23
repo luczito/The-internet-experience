@@ -2,18 +2,18 @@ function Home() {
   const sections = [
     {
       title: "Purpose",
-      content: "The point of this website is to provide a platform where users can learn about the hostile and toxic patterns that exist on the internet. The website is designed to be a parody of news pages and onlnie shops, highlighting the toxic behaviors of these sites."
+      content: "The purpose of this website is to provide a platform where users can learn about the hostile and toxic patterns that exist on the internet. The website is designed to be a parody of news / article pages and webshops, highlighting and exaggerating the toxic or manipulative behaviors of these sites."
     },
     {
       title: "Available Pages",
       subsections: [
         {
           name: "Home",
-          description: "Provides an overview of the sub pages and the purpose of this website."
+          description: "This page which provides an overview of the sub pages and the overall purpose of this website."
         },
         {
           name: "Blog",
-          description: "Emulates a blog or news page, with a focus on the hostile and toxic patterns existing on these types of websites."
+          description: "Emulates a blog, article or news page, with a focus on the hostile and toxic patterns existing on these types of websites."
         },
         {
           name: "Shop",
