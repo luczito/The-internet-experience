@@ -3,7 +3,7 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Blog from "./pages/Blog";
 import Shop from "./pages/Shop";
-import ToxicPatterns from "./pages/ToxicPatterns";
+import DarkPatterns from "./pages/DarkPatterns";
 
 function App() {
   return (
@@ -13,7 +13,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="blog" element={<Blog />} />
           <Route path="shop" element={<Shop />} />
-          <Route path="toxic-patterns" element={<ToxicPatterns />} />
+          <Route path="dark-patterns" element={<DarkPatterns />} />
         </Route>
       </Routes>
     </BrowserRouter>

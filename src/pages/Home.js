@@ -2,7 +2,9 @@ function Home() {
   const sections = [
     {
       title: "Purpose",
-      content: "The purpose of this website is to provide a platform where users can learn about the hostile and toxic patterns that exist on the internet. The website is designed to be a parody of news / article pages and webshops, highlighting and exaggerating the toxic or manipulative behaviors of these sites."
+      content: `The purpose of this website is to provide a platform where users can learn about the hostile and dark patterns that exist on the internet. 
+      These tactics, such as hidden opt-outs, misleading language, and false urgency, are deliberately used to benefit the owners of the site at the expense of the user.
+      The website is designed to mimic news / article pages and webshops, highlighting and exaggerating the toxic or manipulative behaviors of these sites, with clear explanations of each dark pattern implemented`
     },
     {
       title: "Available Pages",
@@ -13,14 +15,14 @@ function Home() {
         },
         {
           name: "Blog",
-          description: "Emulates a blog, article or news page, with a focus on the hostile and toxic patterns existing on these types of websites."
+          description: "Emulates a blog, article or news page, with a focus on the hostile and dark patterns existing on these types of websites."
         },
         {
           name: "Shop",
           description: "Simulates a common online shopping platform, featuring various dark patterns that try to trap you with additional fees and manipulative tactics."
         },
         {
-          name: "Toxic Patterns",
+          name: "Dark Patterns",
           description: "A page that documents the various dark patterns and hostile design elements implemented across the site for educational purposes."}
       ]
     }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ToxicPatterns() {
+function DarkPatterns() {
   const patterns = [
     {
       category: "Shop Page Patterns",
@@ -86,7 +86,7 @@ function ToxicPatterns() {
 
   return (
     <div className="container mx-auto py-10 px-4">
-      <h1 className="text-3xl font-bold mb-8">Toxic patterns</h1>
+      <h1 className="text-3xl font-bold mb-8">Dark Patterns</h1>
       <p className="text-gray-600 mb-8">
         This page documents the various dark patterns and hostile design elements implemented 
         across the site for educational purposes. These patterns demonstrate common manipulative 
@@ -113,11 +113,11 @@ function ToxicPatterns() {
         <p className="mb-2 text-gray-700">
           These patterns are implemented and exaggerated for educational purposes to demonstrate how websites 
           can manipulate user behavior. For developers they show what to be aware of when designing websites, 
-          for users they highlight what to be aware of when visiting browsing online.
+          for users they highlight what to be aware of when navigating the internet.
         </p>
       </div>
     </div>
   );
 }
 
-export default ToxicPatterns;
+export default DarkPatterns;
