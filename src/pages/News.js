@@ -65,28 +65,24 @@ function News() {
     setShowPopup(false);
   };
 
-  // Add timer to show popup
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(true);
-    }, 20000); // 20 seconds in milliseconds
+    }, 20000);
 
-    return () => clearTimeout(timer); // Cleanup on unmount
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <main className="container mx-auto py-10 px-4 relative">
-      {/* Left side ad */}
       <div className="fixed left-4" style={{ top: '8rem' }}>
         <AdCard position="left" triggerToxicPattern={triggerToxicPattern} />
       </div>
 
-      {/* Right side ad */}
       <div className="fixed right-4" style={{ top: '8rem' }}>
         <AdCard position="right" triggerToxicPattern={triggerToxicPattern} />
       </div>
 
-      {/* Existing article content with adjusted max-width */}
       <div className="max-w-3xl mx-auto relative">
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-4">The Future of Digital Experience</h1>
@@ -133,7 +129,7 @@ function News() {
                   className="absolute inset-0 flex items-center justify-center bg-gray-100 cursor-pointer hover:bg-gray-200 transition"
                   onClick={() => {
                     setShowCookieModal(true);
-                    setCookieStep(2); // Go to cookie settings
+                    setCookieStep(2);
                   }}
                 >
                   <div className="text-center p-6">
@@ -179,14 +175,13 @@ function News() {
         </article>
       </div>
 
-      {/* Existing modals */}
       {showPopup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
           <div className="bg-white p-8 rounded-lg shadow-lg relative w-3/4 max-w-lg">
             <h2 className="text-2xl font-bold mb-4">Sign Up for Our Newsletter!</h2>
             <p className="text-gray-700 mb-6">
               Get the latest redundant information and spam mails from us! Don't miss out! This is a great opportunity to receive content you never asked for,
-              and is not needed at all, you can close this popup in the top right corner.
+              and is not needed at all, you can close this at the top right corner of the popup.
             </p>
             <form onSubmit={(e) => {
               e.preventDefault();

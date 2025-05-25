@@ -82,9 +82,9 @@ function Shop() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShowPopup(true);
-    }, 20000); // 20 seconds in milliseconds
+    }, 20000);
 
-    return () => clearTimeout(timer); // Cleanup on unmount
+    return () => clearTimeout(timer);
   }, []);
 
   const removeFromCart = (itemId) => {
