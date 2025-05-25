@@ -8,7 +8,7 @@ function Layout() {
           <h1 className="text-2xl font-bold">The Internet Experience</h1>
           <nav className="space-x-6">
             <Link to="/" className="hover:underline">Home</Link>
-            <Link to="/blog" className="hover:underline">Blog</Link>
+            <Link to="/news" className="hover:underline">News</Link>
             <Link to="/shop" className="hover:underline">Shop</Link>
             <Link to="/dark-patterns" className="hover:underline">Dark Patterns</Link>
           </nav>

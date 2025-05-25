@@ -53,7 +53,7 @@ function DarkPatterns() {
       ]
     },
     {
-      category: "Blog Page Patterns",
+      category: "News Page Patterns",
       patterns: [
         {
           name: "Intrusive Newsletter Popup",

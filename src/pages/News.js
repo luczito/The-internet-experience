@@ -49,7 +49,7 @@ const AdCard = ({ position, triggerToxicPattern }) => (
   </div>
 );
 
-function Blog() {
+function News() {
   const { triggerToxicPattern } = useToxicContext();
   const [showPopup, setShowPopup] = useState(false);
   const [showCookieModal, setShowCookieModal] = useState(true);
@@ -364,4 +364,4 @@ function Blog() {
   );
 }
 
-export default Blog;
+export default News;
