@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Home() {
   const sections = [
     {
@@ -11,19 +13,24 @@ function Home() {
       subsections: [
         {
           name: "Home",
-          description: "This page which provides an overview of the sub pages and the overall purpose of this website."
+          description: "This page which provides an overview of the sub pages and the overall purpose of this website.",
+          path: "/"
         },
         {
-          name: "Blog",
-          description: "Emulates a blog, article or news page, with a focus on the hostile and dark patterns existing on these types of websites."
+          name: "News",
+          description: "Emulates a news or article page, with a focus on the hostile and dark patterns existing on these types of websites.",
+          path: "/news"
         },
         {
           name: "Shop",
-          description: "Simulates a common online shopping platform, featuring various dark patterns that try to trap you with additional fees and manipulative tactics."
+          description: "Simulates a common online shopping platform, featuring various dark patterns that try to trap you with additional fees and manipulative tactics.",
+          path: "/shop"
         },
         {
           name: "Dark Patterns",
-          description: "A page that documents the various dark patterns and hostile design elements implemented across the site for educational purposes."}
+          description: "A page that documents the various dark patterns and hostile design elements implemented across the site for educational purposes.",
+          path: "/dark-patterns"
+        }
       ]
     }
   ];
@@ -45,9 +52,10 @@ function Home() {
           {section.subsections && (
             <div className="grid gap-6 md:grid-cols-2">
               {section.subsections.map((subsection, subIndex) => (
-                <div 
+                <Link 
+                  to={subsection.path}
                   key={subIndex} 
-                  className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
+                  className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow block"
                 >
                   <h3 className="text-xl font-semibold mb-2 text-gray-800">
                     {subsection.name}
@@ -55,7 +63,7 @@ function Home() {
                   <p className="text-gray-600 leading-relaxed">
                     {subsection.description}
                   </p>
-                </div>
+                </Link>
               ))}
             </div>
           )}
